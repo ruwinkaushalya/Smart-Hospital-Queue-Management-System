@@ -1,0 +1,2 @@
+# Smart Hospital Queue Management System
+
