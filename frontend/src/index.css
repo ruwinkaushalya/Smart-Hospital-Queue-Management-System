@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", "Noto Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary-50: #ecfeff;
+  --color-primary-100: #cffafe;
+  --color-primary-500: #06b6d4;
+  --color-primary-600: #0891b2;
+  --color-primary-700: #0e7490;
+  --color-emergency-50: #fef2f2;
+  --color-emergency-100: #fee2e2;
+  --color-emergency-500: #ef4444;
+  --color-emergency-600: #dc2626;
+  --color-emergency-700: #b91c1c;
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+}
+
+body {
+  background-color: #f1f5f9;
+  color: #334155;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.btn-primary {
+  padding: 0.5rem 1rem;
+  background-color: #0891b2;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 200ms ease;
+  cursor: pointer;
+  min-height: 44px;
+  box-shadow: 0 1px 2px rgba(8, 145, 178, 0.2);
+}
+.btn-primary:hover {
+  background-color: #0e7490;
+  box-shadow: 0 2px 6px rgba(8, 145, 178, 0.3);
+}
+
+.btn-danger {
+  padding: 0.5rem 1rem;
+  background-color: #dc2626;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 200ms ease;
+  cursor: pointer;
+  min-height: 44px;
+}
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn-success {
+  padding: 0.5rem 1rem;
+  background-color: #16a34a;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 200ms ease;
+  cursor: pointer;
+  min-height: 44px;
+}
+.btn-success:hover {
+  background-color: #15803d;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Smooth hover transitions for interactive elements */
+a, button, [role="button"], select, input, textarea {
+  transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+}
+
+/* Toast notification animations */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}
+
+@keyframes toastProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toast-enter {
+  animation: toastSlideIn 350ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.toast-exit {
+  animation: toastSlideOut 300ms cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+.toast-progress {
+  animation: toastProgress 6000ms linear forwards;
+}
+
+/* Pause progress bar when user hovers over toast */
+.toast-item:hover .toast-progress {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar for light theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Sidebar nav hover animations */
+@keyframes navIconBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.15); }
+  70% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes navTextSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(3px); }
+}
+
+.nav-item-hover:hover {
+  transform: translateX(2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.nav-item-hover:hover .nav-icon-box {
+  animation: navIconBounce 0.4s ease forwards;
+}
+
+.nav-item-hover:hover .nav-label {
+  animation: navTextSlide 0.25s ease forwards;
+}
+
+/* Active nav item shadow */
+.nav-item-active {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .nav-item-hover:hover .nav-icon-box,
+  .nav-item-hover:hover .nav-label {
+    animation: none !important;
+  }
+  .nav-item-hover:hover {
+    transform: translateX(0) !important;
+    box-shadow: none !important;
+  }
+  .nav-item-active {
+    box-shadow: none !important;
+  }
+}
